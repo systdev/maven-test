@@ -1,6 +1,5 @@
 package org.example.moduleD;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -13,7 +12,6 @@ import static org.mockito.Mockito.when;
 
 /**
  * 演示PowerMock系统类测试的测试类
- * 注意：System类mocking在Java 17上有限制，已标记为跳过
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({System.class, Runtime.class})
@@ -21,17 +19,14 @@ public class SystemClassUserTest {
 
     /**
      * 测试System属性mocking
-     * 在JDK 17下不兼容，已跳过
      */
     @Test
-    @Ignore("JDK 17兼容性问题 - System类无法完全mocking")
     public void testSystemPropertyMocking() {
         PowerMockito.mockStatic(System.class);
 
         when(System.getProperty("user.name")).thenReturn("TestUser");
 
         SystemClassUser user = new SystemClassUser();
-
         String property = user.getSystemProperty("user.name");
 
         PowerMockito.verifyStatic(System.class);
@@ -40,10 +35,8 @@ public class SystemClassUserTest {
 
     /**
      * 测试当前时间mocking
-     * 在JDK 17下不兼容，已跳过
      */
     @Test
-    @Ignore("JDK 17兼容性问题 - System类无法完全mocking")
     public void testCurrentTimeMocking() {
         PowerMockito.mockStatic(System.class);
 
@@ -59,10 +52,9 @@ public class SystemClassUserTest {
 
     /**
      * 测试Runtime方法mocking
-     * 在JDK 17下不兼容，已跳过
+     * 
      */
     @Test
-    @Ignore("JDK 17兼容性问题 - Runtime类mocking在JDK 17下有限制")
     public void testRuntimeMethodsMocking() {
         PowerMockito.mockStatic(Runtime.class);
 
@@ -83,10 +75,9 @@ public class SystemClassUserTest {
 
     /**
      * 测试系统环境变量mocking
-     * 在JDK 17下不兼容，已跳过
+     * 
      */
     @Test
-    @Ignore("JDK 17兼容性问题 - System类无法完全mocking")
     public void testSystemEnvironmentMocking() {
         // 注意：System类mocking在Java 17上可能不工作
         PowerMockito.mockStatic(System.class);
@@ -105,10 +96,9 @@ public class SystemClassUserTest {
 
     /**
      * 测试多个系统方法mocking
-     * 在JDK 17下不兼容，已跳过
+     * 
      */
     @Test
-    @Ignore("JDK 17兼容性问题 - System类无法完全mocking")
     public void testSystemMultipleMethods() {
         // 注意：System类mocking在Java 17上可能不工作
         PowerMockito.mockStatic(System.class);
@@ -137,10 +127,9 @@ public class SystemClassUserTest {
 
     /**
      * 测试GC调用验证
-     * 在JDK 17下不兼容，已跳过
+     * 
      */
     @Test
-    @Ignore("JDK 17兼容性问题 - System类无法完全mocking")
     public void testGCCallVerification() {
         PowerMockito.mockStatic(System.class);
 
@@ -154,10 +143,9 @@ public class SystemClassUserTest {
 
     /**
      * 测试文件操作mocking
-     * 在JDK 17下不兼容，已跳过
+     * 
      */
     @Test
-    @Ignore("JDK 17兼容性问题 - System类无法完全mocking")
     public void testFileExistsMocking() throws Exception {
         PowerMockito.mockStatic(System.class);
 

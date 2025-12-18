@@ -1,6 +1,5 @@
 package org.example.moduleD;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -12,11 +11,9 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * 演示PowerMock私有方法测试的测试类
- * 注意：在JDK 17下，私有方法mocking有兼容性问题，已跳过
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(PrivateMethodClass.class)
-@Ignore("JDK 17兼容性问题 - 私有方法mocking在JDK 17下有限制")
 public class PrivateMethodClassTest {
 
     /**

@@ -1,6 +1,5 @@
 package org.example.moduleD;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -13,16 +12,15 @@ import static org.mockito.Mockito.when;
 
 /**
  * 综合PowerMock测试类 - 演示多种PowerMock功能组合使用
- * 注意：在JDK 17下，综合测试有兼容性问题，已跳过
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({
         StaticMethodClass.class,
         SingletonClass.class,
         System.class,
-        Runtime.class
+        Runtime.class,
+        PartialMockClass.class
 })
-@Ignore("JDK 17兼容性问题 - 综合测试包含System类mocking")
 public class ComprehensivePowerMockTest {
 
     /**
@@ -109,8 +107,8 @@ public class ComprehensivePowerMockTest {
                 .withArguments("Test")
                 .thenReturn(mock);
 
-        Mockito.when(mock.getName()).thenReturn("Mocked in Constructor Test");
-        Mockito.when(mock.isInitialized()).thenReturn(true);
+        PowerMockito.doReturn("Mocked in Constructor Test").when(mock).getName();
+        PowerMockito.doReturn(true).when(mock).isInitialized();
 
         ConstructorClass instance = new ConstructorClass("Test");
 
@@ -142,7 +140,7 @@ public class ComprehensivePowerMockTest {
         PowerMockito.whenNew(ConstructorClass.class)
                 .withArguments("Complex")
                 .thenReturn(mockConstructor);
-        Mockito.when(mockConstructor.getDescription()).thenReturn("Complex Mock");
+        PowerMockito.doReturn("Complex Mock").when(mockConstructor).getDescription();
 
         PrivateMethodClass spyPrivate = PowerMockito.spy(new PrivateMethodClass("Spy", 5));
         PowerMockito.doReturn("TRANSFORMED").when(spyPrivate, "transform");

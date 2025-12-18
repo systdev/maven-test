@@ -26,9 +26,9 @@ public class ConstructorClassTest {
                 .withArguments("John")
                 .thenReturn(mock);
 
-        Mockito.when(mock.getName()).thenReturn("Mocked Name");
-        Mockito.when(mock.getAge()).thenReturn(25);
-        Mockito.when(mock.getDescription()).thenReturn("Mocked Description");
+        PowerMockito.doReturn("Mocked Name").when(mock).getName();
+        PowerMockito.doReturn(25).when(mock).getAge();
+        PowerMockito.doReturn("Mocked Description").when(mock).getDescription();
 
         ConstructorClass instance = new ConstructorClass("John");
 
@@ -50,8 +50,8 @@ public class ConstructorClassTest {
                 .withArguments("Jane", 30)
                 .thenReturn(mock);
 
-        Mockito.when(mock.getName()).thenReturn("Jane");
-        Mockito.when(mock.getAge()).thenReturn(30);
+        PowerMockito.doReturn("Jane").when(mock).getName();
+        PowerMockito.doReturn(30).when(mock).getAge();
 
         ConstructorClass instance = new ConstructorClass("Jane", 30);
 
@@ -69,8 +69,8 @@ public class ConstructorClassTest {
                 .withNoArguments()
                 .thenReturn(mock);
 
-        Mockito.when(mock.getName()).thenReturn("Unknown");
-        Mockito.when(mock.getAge()).thenReturn(0);
+        PowerMockito.doReturn("Unknown").when(mock).getName();
+        PowerMockito.doReturn(0).when(mock).getAge();
 
         ConstructorClass instance = new ConstructorClass();
 
@@ -104,8 +104,8 @@ public class ConstructorClassTest {
                 .withArguments("Second")
                 .thenReturn(mock2);
 
-        Mockito.when(mock1.getName()).thenReturn("First");
-        Mockito.when(mock2.getName()).thenReturn("Second");
+        PowerMockito.doReturn("First").when(mock1).getName();
+        PowerMockito.doReturn("Second").when(mock2).getName();
 
         ConstructorClass instance1 = new ConstructorClass("First");
         ConstructorClass instance2 = new ConstructorClass("Second");
