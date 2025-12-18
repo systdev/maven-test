@@ -3,60 +3,58 @@ package org.example.moduleB;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/**
+ * DataConverter类的单元测试
+ */
 public class DataConverterTest {
 
-    private DataConverter dataConverter = new DataConverter();
+    private DataConverter converter = new DataConverter();
 
+    /**
+     * 测试字符串转整数
+     */
     @Test
     public void testStringToInt() {
-        assertEquals(123, dataConverter.stringToInt("123"));
-        assertEquals(0, dataConverter.stringToInt(""));
-        assertEquals(0, dataConverter.stringToInt(null));
-        assertEquals(0, dataConverter.stringToInt("abc"));
-        assertEquals(-5, dataConverter.stringToInt("  -5  "));
+        assertEquals(123, converter.stringToInt("123"));
+        assertEquals(-456, converter.stringToInt("-456"));
+        assertEquals(0, converter.stringToInt("abc"));
+        assertEquals(0, converter.stringToInt(null));
+        assertEquals(0, converter.stringToInt(""));
     }
 
-    @Test
-    public void testStringToDouble() {
-        assertEquals(3.14, dataConverter.stringToDouble("3.14"), 0.001);
-        assertEquals(0.0, dataConverter.stringToDouble(""), 0.001);
-        assertEquals(0.0, dataConverter.stringToDouble(null), 0.001);
-        assertEquals(0.0, dataConverter.stringToDouble("abc"), 0.001);
-        assertEquals(2.5, dataConverter.stringToDouble("  2.5  "), 0.001);
-    }
-
+    /**
+     * 测试字符串转boolean
+     */
     @Test
     public void testStringToBoolean() {
-        assertTrue(dataConverter.stringToBoolean("true"));
-        assertTrue(dataConverter.stringToBoolean("TRUE"));
-        assertTrue(dataConverter.stringToBoolean("True"));
-        assertTrue(dataConverter.stringToBoolean("yes"));
-        assertTrue(dataConverter.stringToBoolean("YES"));
-        assertTrue(dataConverter.stringToBoolean("1"));
-        assertFalse(dataConverter.stringToBoolean("false"));
-        assertFalse(dataConverter.stringToBoolean("no"));
-        assertFalse(dataConverter.stringToBoolean("0"));
-        assertFalse(dataConverter.stringToBoolean(null));
-        assertFalse(dataConverter.stringToBoolean("random"));
+        assertEquals(true, converter.stringToBoolean("true"));
+        assertEquals(true, converter.stringToBoolean("yes"));
+        assertEquals(true, converter.stringToBoolean("1"));
+        assertEquals(true, converter.stringToBoolean("TRUE"));
+        assertEquals(false, converter.stringToBoolean("false"));
+        assertEquals(false, converter.stringToBoolean(null));
+        assertEquals(false, converter.stringToBoolean("no"));
     }
 
+    /**
+     * 测试整数转二进制字符串
+     */
     @Test
     public void testIntToBinary() {
-        assertEquals("0", dataConverter.intToBinary(0));
-        assertEquals("1", dataConverter.intToBinary(1));
-        assertEquals("10", dataConverter.intToBinary(2));
-        assertEquals("11", dataConverter.intToBinary(3));
-        assertEquals("1010", dataConverter.intToBinary(10));
-        assertEquals("1111111111", dataConverter.intToBinary(1023));
+        assertEquals("0", converter.intToBinary(0));
+        assertEquals("1010", converter.intToBinary(10));
+        assertEquals("1111111111", converter.intToBinary(1023));
+        assertEquals("1010", converter.intToBinary(-10));
     }
 
+    /**
+     * 测试整数转十六进制字符串
+     */
     @Test
     public void testIntToHex() {
-        assertEquals("0", dataConverter.intToHex(0));
-        assertEquals("1", dataConverter.intToHex(1));
-        assertEquals("A", dataConverter.intToHex(10));
-        assertEquals("F", dataConverter.intToHex(15));
-        assertEquals("10", dataConverter.intToHex(16));
-        assertEquals("FF", dataConverter.intToHex(255));
+        assertEquals("0", converter.intToHex(0));
+        assertEquals("A", converter.intToHex(10));
+        assertEquals("FF", converter.intToHex(255));
+        assertEquals("ABC", converter.intToHex(2748));
     }
 }

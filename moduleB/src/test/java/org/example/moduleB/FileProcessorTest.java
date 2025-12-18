@@ -3,55 +3,72 @@ package org.example.moduleB;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/**
+ * FileProcessor类的单元测试
+ */
 public class FileProcessorTest {
 
-    private FileProcessor fileProcessor = new FileProcessor();
+    private FileProcessor processor = new FileProcessor();
 
+    /**
+     * 测试获取文件扩展名
+     */
     @Test
     public void testGetFileExtension() {
-        assertEquals("txt", fileProcessor.getFileExtension("file.txt"));
-        assertEquals("java", fileProcessor.getFileExtension("Test.java"));
-        assertEquals("pdf", fileProcessor.getFileExtension("document.pdf"));
-        assertEquals("", fileProcessor.getFileExtension("file"));
-        assertEquals("", fileProcessor.getFileExtension(null));
-        assertEquals("", fileProcessor.getFileExtension("file."));
+        assertEquals("txt", processor.getFileExtension("test.txt"));
+        assertEquals("java", processor.getFileExtension("Test.java"));
+        assertEquals("", processor.getFileExtension("test"));
+        assertEquals("", processor.getFileExtension("test."));
+        assertEquals("", processor.getFileExtension(null));
     }
 
+    /**
+     * 测试是否为文本文件
+     */
     @Test
     public void testIsTextFile() {
-        assertTrue(fileProcessor.isTextFile("file.txt"));
-        assertTrue(fileProcessor.isTextFile("data.csv"));
-        assertTrue(fileProcessor.isTextFile("log.log"));
-        assertTrue(fileProcessor.isTextFile("readme.md"));
-        assertFalse(fileProcessor.isTextFile("image.jpg"));
-        assertFalse(fileProcessor.isTextFile("video.mp4"));
+        assertEquals(true, processor.isTextFile("test.txt"));
+        assertEquals(true, processor.isTextFile("data.csv"));
+        assertEquals(true, processor.isTextFile("log.md"));
+        assertEquals(false, processor.isTextFile("image.jpg"));
+        assertEquals(false, processor.isTextFile(null));
     }
 
+    /**
+     * 测试文件名清理
+     */
     @Test
     public void testSanitizeFilename() {
-        assertEquals("file_name.txt", fileProcessor.sanitizeFilename("file@name.txt"));
-        assertEquals("test_file.txt", fileProcessor.sanitizeFilename("test<>file.txt"));
-        assertEquals("file.txt", fileProcessor.sanitizeFilename("file.txt"));
-        assertEquals("", fileProcessor.sanitizeFilename(null));
+        assertEquals("test_file.txt", processor.sanitizeFilename("test file.txt"));
+        assertEquals("test_file_.txt", processor.sanitizeFilename("test@file#.txt"));
+        assertEquals("test_file.txt", processor.sanitizeFilename("test<>file.txt"));
+        assertEquals("", processor.sanitizeFilename(null));
     }
 
+    /**
+     * 测试文件名有效性检查
+     */
     @Test
     public void testIsValidFilename() {
-        assertTrue(fileProcessor.isValidFilename("file.txt"));
-        assertTrue(fileProcessor.isValidFilename("test_file_123.txt"));
-        assertFalse(fileProcessor.isValidFilename("file<>.txt"));
-        assertFalse(fileProcessor.isValidFilename("file:.txt"));
-        assertFalse(fileProcessor.isValidFilename("file/.txt"));
-        assertFalse(fileProcessor.isValidFilename(""));
-        assertFalse(fileProcessor.isValidFilename(null));
+        assertEquals(true, processor.isValidFilename("test.txt"));
+        assertEquals(false, processor.isValidFilename("test<file.txt"));
+        assertEquals(false, processor.isValidFilename("test>file.txt"));
+        assertEquals(false, processor.isValidFilename("test:file.txt"));
+        assertEquals(false, processor.isValidFilename("test\"file.txt"));
+        assertEquals(false, processor.isValidFilename("test/file.txt"));
+        assertEquals(false, processor.isValidFilename(null));
+        assertEquals(false, processor.isValidFilename(""));
     }
 
+    /**
+     * 测试统计行数
+     */
     @Test
     public void testCountLines() {
-        assertEquals(0, fileProcessor.countLines(null));
-        assertEquals(0, fileProcessor.countLines(""));
-        assertEquals(1, fileProcessor.countLines("single line"));
-        assertEquals(2, fileProcessor.countLines("line1\nline2"));
-        assertEquals(3, fileProcessor.countLines("line1\nline2\nline3"));
+        assertEquals(0, processor.countLines(null));
+        assertEquals(0, processor.countLines(""));
+        assertEquals(1, processor.countLines("single line"));
+        assertEquals(3, processor.countLines("line1\nline2\nline3"));
+        assertEquals(2, processor.countLines("line1\nline2\n"));
     }
 }

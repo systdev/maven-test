@@ -3,51 +3,69 @@ package org.example.moduleA;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/**
+ * Validator类的单元测试
+ */
 public class ValidatorTest {
 
     private Validator validator = new Validator();
 
+    /**
+     * 测试邮箱验证
+     */
     @Test
     public void testIsValidEmail() {
-        assertTrue(validator.isValidEmail("test@example.com"));
-        assertTrue(validator.isValidEmail("user@test.org"));
-        assertFalse(validator.isValidEmail("test"));
-        assertFalse(validator.isValidEmail("test@"));
-        assertFalse(validator.isValidEmail("@example.com"));
-        assertFalse(validator.isValidEmail(null));
+        assertEquals(true, validator.isValidEmail("test@example.com"));
+        assertEquals(true, validator.isValidEmail("user.name@domain.co.uk"));
+        assertEquals(false, validator.isValidEmail("invalid"));
+        assertEquals(false, validator.isValidEmail(null));
+        assertEquals(false, validator.isValidEmail(""));
     }
 
+    /**
+     * 测试年龄验证
+     */
     @Test
     public void testIsValidAge() {
-        assertTrue(validator.isValidAge(25));
-        assertTrue(validator.isValidAge(0));
-        assertTrue(validator.isValidAge(150));
-        assertFalse(validator.isValidAge(-1));
-        assertFalse(validator.isValidAge(151));
+        assertEquals(true, validator.isValidAge(25));
+        assertEquals(true, validator.isValidAge(0));
+        assertEquals(true, validator.isValidAge(100));
+        assertEquals(true, validator.isValidAge(150));
+        assertEquals(false, validator.isValidAge(-1));
+        assertEquals(false, validator.isValidAge(151));
     }
 
+    /**
+     * 测试手机号验证
+     */
     @Test
     public void testIsValidPhoneNumber() {
-        assertTrue(validator.isValidPhoneNumber("1234567890"));
-        assertFalse(validator.isValidPhoneNumber("123456789"));
-        assertFalse(validator.isValidPhoneNumber("12345678901"));
-        assertFalse(validator.isValidPhoneNumber("abc1234567"));
-        assertFalse(validator.isValidPhoneNumber(null));
+        assertEquals(true, validator.isValidPhoneNumber("1234567890"));
+        assertEquals(false, validator.isValidPhoneNumber("13800138000"));
+        assertEquals(false, validator.isValidPhoneNumber("010-12345678"));
+        assertEquals(false, validator.isValidPhoneNumber("123"));
+        assertEquals(false, validator.isValidPhoneNumber(null));
     }
 
+    /**
+     * 测试非空非空验证
+     */
     @Test
     public void testIsNotNullOrEmpty() {
-        assertTrue(validator.isNotNullOrEmpty("hello"));
-        assertTrue(validator.isNotNullOrEmpty(" "));
-        assertFalse(validator.isNotNullOrEmpty(""));
-        assertFalse(validator.isNotNullOrEmpty(null));
+        assertEquals(false, validator.isNotNullOrEmpty(null));
+        assertEquals(false, validator.isNotNullOrEmpty(""));
+        assertEquals(true, validator.isNotNullOrEmpty("  "));
+        assertEquals(true, validator.isNotNullOrEmpty("test"));
     }
 
+    /**
+     * 测试正数验证
+     */
     @Test
     public void testIsPositive() {
-        assertTrue(validator.isPositive(1));
-        assertTrue(validator.isPositive(100));
-        assertFalse(validator.isPositive(0));
-        assertFalse(validator.isPositive(-1));
+        assertEquals(true, validator.isPositive(1));
+        assertEquals(true, validator.isPositive(100));
+        assertEquals(false, validator.isPositive(0));
+        assertEquals(false, validator.isPositive(-1));
     }
 }

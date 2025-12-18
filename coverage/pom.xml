@@ -29,6 +29,11 @@
             <artifactId>moduleC</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>moduleD</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
