@@ -1,12 +1,12 @@
 package org.example.moduleC;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * TextAnalyzer类的单元测试
  */
-public class TextAnalyzerTest {
+class TextAnalyzerTest {
 
     private TextAnalyzer analyzer = new TextAnalyzer();
 
@@ -14,7 +14,7 @@ public class TextAnalyzerTest {
      * 测试统计单词数
      */
     @Test
-    public void testCountWords() {
+    void testCountWords() {
         assertEquals(0, analyzer.countWords(null));
         assertEquals(0, analyzer.countWords(""));
         assertEquals(0, analyzer.countWords("   "));
@@ -27,7 +27,7 @@ public class TextAnalyzerTest {
      * 测试统计字符数
      */
     @Test
-    public void testCountCharacters() {
+    void testCountCharacters() {
         assertEquals(0, analyzer.countCharacters(null));
         assertEquals(5, analyzer.countCharacters("hello"));
         assertEquals(2, analyzer.countCharacters("你好"));
@@ -38,7 +38,7 @@ public class TextAnalyzerTest {
      * 测试统计元音字母数
      */
     @Test
-    public void testCountVowels() {
+    void testCountVowels() {
         assertEquals(0, analyzer.countVowels(null));
         assertEquals(0, analyzer.countVowels(""));
         assertEquals(2, analyzer.countVowels("hello"));
@@ -51,7 +51,7 @@ public class TextAnalyzerTest {
      * 测试文本反转
      */
     @Test
-    public void testReverseText() {
+    void testReverseText() {
         assertNull(analyzer.reverseText(null));
         assertEquals("", analyzer.reverseText(""));
         assertEquals("olleh", analyzer.reverseText("hello"));
@@ -62,7 +62,7 @@ public class TextAnalyzerTest {
      * 测试移除空格
      */
     @Test
-    public void testRemoveSpaces() {
+    void testRemoveSpaces() {
         assertNull(analyzer.removeSpaces(null));
         assertEquals("", analyzer.removeSpaces(""));
         assertEquals("helloworld", analyzer.removeSpaces("hello world"));

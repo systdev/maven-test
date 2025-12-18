@@ -1,12 +1,12 @@
 package org.example.moduleC;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * NumberGenerator类的单元测试
  */
-public class NumberGeneratorTest {
+class NumberGeneratorTest {
 
     private NumberGenerator generator = new NumberGenerator();
 
@@ -14,7 +14,7 @@ public class NumberGeneratorTest {
      * 测试生成随机整数数组
      */
     @Test
-    public void testGenerateRandomNumbers() {
+    void testGenerateRandomNumbers() {
         int[] result = generator.generateRandomNumbers(5, 1, 10);
         assertEquals(5, result.length);
         for (int num : result) {
@@ -28,7 +28,7 @@ public class NumberGeneratorTest {
      * 测试生成单个随机整数
      */
     @Test
-    public void testGenerateRandomNumber() {
+    void testGenerateRandomNumber() {
         int min = 1;
         int max = 100;
         int result = generator.generateRandomNumber(min, max);
@@ -41,7 +41,7 @@ public class NumberGeneratorTest {
      * 测试判断是否为偶数
      */
     @Test
-    public void testIsEven() {
+    void testIsEven() {
         assertEquals(true, generator.isEven(2));
         assertEquals(true, generator.isEven(0));
         assertEquals(true, generator.isEven(-2));
@@ -53,7 +53,7 @@ public class NumberGeneratorTest {
      * 测试判断是否为奇数
      */
     @Test
-    public void testIsOdd() {
+    void testIsOdd() {
         assertEquals(true, generator.isOdd(1));
         assertEquals(true, generator.isOdd(-1));
         assertEquals(false, generator.isOdd(2));
@@ -65,7 +65,7 @@ public class NumberGeneratorTest {
      * 测试过滤偶数
      */
     @Test
-    public void testFilterEvenNumbers() {
+    void testFilterEvenNumbers() {
         int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         int[] even = generator.filterEvenNumbers(numbers);
         assertEquals(5, even.length);

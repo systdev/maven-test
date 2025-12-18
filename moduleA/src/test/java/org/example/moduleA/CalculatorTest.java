@@ -1,12 +1,12 @@
 package org.example.moduleA;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Calculator类的单元测试
+ * Calculator类的单元测试 - 使用JUnit5
  */
-public class CalculatorTest {
+class CalculatorTest {
 
     private Calculator calculator = new Calculator();
 
@@ -14,7 +14,7 @@ public class CalculatorTest {
      * 测试加法运算
      */
     @Test
-    public void testAdd() {
+    void testAdd() {
         assertEquals(5, calculator.add(2, 3));
         assertEquals(0, calculator.add(-1, 1));
         assertEquals(-5, calculator.add(-2, -3));
@@ -24,7 +24,7 @@ public class CalculatorTest {
      * 测试减法运算
      */
     @Test
-    public void testSubtract() {
+    void testSubtract() {
         assertEquals(1, calculator.subtract(3, 2));
         assertEquals(-2, calculator.subtract(-1, 1));
         assertEquals(1, calculator.subtract(-2, -3));
@@ -34,7 +34,7 @@ public class CalculatorTest {
      * 测试乘法运算
      */
     @Test
-    public void testMultiply() {
+    void testMultiply() {
         assertEquals(6, calculator.multiply(2, 3));
         assertEquals(-2, calculator.multiply(-1, 2));
         assertEquals(6, calculator.multiply(-2, -3));
@@ -45,7 +45,7 @@ public class CalculatorTest {
      * 测试除法运算
      */
     @Test
-    public void testDivide() {
+    void testDivide() {
         assertEquals(2.5, calculator.divide(5, 2), 0.001);
         assertEquals(2.0, calculator.divide(4, 2), 0.001);
         assertEquals(-2.5, calculator.divide(-5, 2), 0.001);
@@ -54,16 +54,18 @@ public class CalculatorTest {
     /**
      * 测试除零异常 - 验证抛出IllegalArgumentException异常
      */
-    @Test(expected = IllegalArgumentException.class)
-    public void testDivideByZero() {
-        calculator.divide(5, 0);
+    @Test
+    void testDivideByZero() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            calculator.divide(5, 0);
+        });
     }
 
     /**
      * 测试最大值运算
      */
     @Test
-    public void testMax() {
+    void testMax() {
         assertEquals(5, calculator.max(5, 3));
         assertEquals(5, calculator.max(3, 5));
         assertEquals(5, calculator.max(5, 5));

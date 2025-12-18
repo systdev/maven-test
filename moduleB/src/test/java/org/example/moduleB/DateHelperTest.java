@@ -1,12 +1,12 @@
 package org.example.moduleB;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * DateHelper类的单元测试
  */
-public class DateHelperTest {
+class DateHelperTest {
 
     private DateHelper dateHelper = new DateHelper();
 
@@ -14,7 +14,7 @@ public class DateHelperTest {
      * 测试闰年判断
      */
     @Test
-    public void testIsLeapYear() {
+    void testIsLeapYear() {
         assertEquals(true, dateHelper.isLeapYear(2000));
         assertEquals(true, dateHelper.isLeapYear(2004));
         assertEquals(false, dateHelper.isLeapYear(1900));
@@ -26,7 +26,7 @@ public class DateHelperTest {
      * 测试获取月份天数
      */
     @Test
-    public void testDaysInMonth() {
+    void testDaysInMonth() {
         assertEquals(31, dateHelper.daysInMonth(1, 2024));
         assertEquals(29, dateHelper.daysInMonth(2, 2024));
         assertEquals(28, dateHelper.daysInMonth(2, 2023));
@@ -41,7 +41,7 @@ public class DateHelperTest {
      * 测试是否为周末
      */
     @Test
-    public void testIsWeekend() {
+    void testIsWeekend() {
         assertEquals(true, dateHelper.isWeekend(1));
         assertEquals(true, dateHelper.isWeekend(7));
         assertEquals(false, dateHelper.isWeekend(2));
@@ -52,7 +52,7 @@ public class DateHelperTest {
      * 测试计算两个日期之间的天数
      */
     @Test
-    public void testDaysBetween() {
+    void testDaysBetween() {
         assertEquals(1, dateHelper.daysBetween(2024, 1, 1, 2024, 1, 2));
         assertEquals(0, dateHelper.daysBetween(2024, 1, 1, 2024, 1, 1));
         assertEquals(365, dateHelper.daysBetween(2023, 1, 1, 2024, 1, 1));

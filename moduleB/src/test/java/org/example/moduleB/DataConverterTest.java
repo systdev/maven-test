@@ -1,12 +1,12 @@
 package org.example.moduleB;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * DataConverter类的单元测试
  */
-public class DataConverterTest {
+class DataConverterTest {
 
     private DataConverter converter = new DataConverter();
 
@@ -14,7 +14,7 @@ public class DataConverterTest {
      * 测试字符串转整数
      */
     @Test
-    public void testStringToInt() {
+    void testStringToInt() {
         assertEquals(123, converter.stringToInt("123"));
         assertEquals(-456, converter.stringToInt("-456"));
         assertEquals(0, converter.stringToInt("abc"));
@@ -26,7 +26,7 @@ public class DataConverterTest {
      * 测试字符串转boolean
      */
     @Test
-    public void testStringToBoolean() {
+    void testStringToBoolean() {
         assertEquals(true, converter.stringToBoolean("true"));
         assertEquals(true, converter.stringToBoolean("yes"));
         assertEquals(true, converter.stringToBoolean("1"));
@@ -40,7 +40,7 @@ public class DataConverterTest {
      * 测试整数转二进制字符串
      */
     @Test
-    public void testIntToBinary() {
+    void testIntToBinary() {
         assertEquals("0", converter.intToBinary(0));
         assertEquals("1010", converter.intToBinary(10));
         assertEquals("1111111111", converter.intToBinary(1023));
@@ -51,7 +51,7 @@ public class DataConverterTest {
      * 测试整数转十六进制字符串
      */
     @Test
-    public void testIntToHex() {
+    void testIntToHex() {
         assertEquals("0", converter.intToHex(0));
         assertEquals("A", converter.intToHex(10));
         assertEquals("FF", converter.intToHex(255));

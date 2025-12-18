@@ -1,12 +1,12 @@
 package org.example.moduleB;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * FileProcessor类的单元测试
  */
-public class FileProcessorTest {
+class FileProcessorTest {
 
     private FileProcessor processor = new FileProcessor();
 
@@ -14,7 +14,7 @@ public class FileProcessorTest {
      * 测试获取文件扩展名
      */
     @Test
-    public void testGetFileExtension() {
+    void testGetFileExtension() {
         assertEquals("txt", processor.getFileExtension("test.txt"));
         assertEquals("java", processor.getFileExtension("Test.java"));
         assertEquals("", processor.getFileExtension("test"));
@@ -26,7 +26,7 @@ public class FileProcessorTest {
      * 测试是否为文本文件
      */
     @Test
-    public void testIsTextFile() {
+    void testIsTextFile() {
         assertEquals(true, processor.isTextFile("test.txt"));
         assertEquals(true, processor.isTextFile("data.csv"));
         assertEquals(true, processor.isTextFile("log.md"));
@@ -38,7 +38,7 @@ public class FileProcessorTest {
      * 测试文件名清理
      */
     @Test
-    public void testSanitizeFilename() {
+    void testSanitizeFilename() {
         assertEquals("test_file.txt", processor.sanitizeFilename("test file.txt"));
         assertEquals("test_file_.txt", processor.sanitizeFilename("test@file#.txt"));
         assertEquals("test_file.txt", processor.sanitizeFilename("test<>file.txt"));
@@ -49,7 +49,7 @@ public class FileProcessorTest {
      * 测试文件名有效性检查
      */
     @Test
-    public void testIsValidFilename() {
+    void testIsValidFilename() {
         assertEquals(true, processor.isValidFilename("test.txt"));
         assertEquals(false, processor.isValidFilename("test<file.txt"));
         assertEquals(false, processor.isValidFilename("test>file.txt"));
@@ -64,7 +64,7 @@ public class FileProcessorTest {
      * 测试统计行数
      */
     @Test
-    public void testCountLines() {
+    void testCountLines() {
         assertEquals(0, processor.countLines(null));
         assertEquals(0, processor.countLines(""));
         assertEquals(1, processor.countLines("single line"));

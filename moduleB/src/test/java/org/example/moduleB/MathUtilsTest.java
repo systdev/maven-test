@@ -1,12 +1,12 @@
 package org.example.moduleB;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * MathUtils类的单元测试
  */
-public class MathUtilsTest {
+class MathUtilsTest {
 
     private MathUtils mathUtils = new MathUtils();
 
@@ -14,7 +14,7 @@ public class MathUtilsTest {
      * 测试计算幂次
      */
     @Test
-    public void testPower() {
+    void testPower() {
         assertEquals(1, mathUtils.power(2, 0));
         assertEquals(2, mathUtils.power(2, 1));
         assertEquals(4, mathUtils.power(2, 2));
@@ -32,7 +32,7 @@ public class MathUtilsTest {
      * 测试计算阶乘
      */
     @Test
-    public void testFactorial() {
+    void testFactorial() {
         assertEquals(1, mathUtils.factorial(0));
         assertEquals(1, mathUtils.factorial(1));
         assertEquals(2, mathUtils.factorial(2));
@@ -50,7 +50,7 @@ public class MathUtilsTest {
      * 测试判断是否为质数
      */
     @Test
-    public void testIsPrime() {
+    void testIsPrime() {
         assertEquals(false, mathUtils.isPrime(0));
         assertEquals(false, mathUtils.isPrime(1));
         assertEquals(true, mathUtils.isPrime(2));
@@ -66,7 +66,7 @@ public class MathUtilsTest {
      * 测试计算最大公约数
      */
     @Test
-    public void testGcd() {
+    void testGcd() {
         assertEquals(6, mathUtils.gcd(12, 18));
         assertEquals(5, mathUtils.gcd(10, 5));
         assertEquals(1, mathUtils.gcd(7, 9));
@@ -78,7 +78,7 @@ public class MathUtilsTest {
      * 测试计算平方根
      */
     @Test
-    public void testSqrt() {
+    void testSqrt() {
         assertEquals(0.0, mathUtils.sqrt(0), 0.001);
         assertEquals(1.0, mathUtils.sqrt(1), 0.001);
         assertEquals(2.0, mathUtils.sqrt(4), 0.001);

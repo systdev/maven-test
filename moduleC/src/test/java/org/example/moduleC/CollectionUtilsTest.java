@@ -1,13 +1,13 @@
 package org.example.moduleC;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 import java.util.*;
 
 /**
  * CollectionUtils类的单元测试
  */
-public class CollectionUtilsTest {
+class CollectionUtilsTest {
 
     private CollectionUtils collectionUtils = new CollectionUtils();
 
@@ -15,7 +15,7 @@ public class CollectionUtilsTest {
      * 测试查找重复元素
      */
     @Test
-    public void testFindDuplicates() {
+    void testFindDuplicates() {
         List<Integer> list = Arrays.asList(1, 2, 2, 3, 3, 3);
         List<Integer> result = collectionUtils.findDuplicates(list);
         assertEquals(2, result.size());
@@ -26,7 +26,7 @@ public class CollectionUtilsTest {
      * 测试列表排序
      */
     @Test
-    public void testSortList() {
+    void testSortList() {
         List<Integer> list = Arrays.asList(3, 1, 4, 1, 5, 9, 2, 6);
         List<Integer> result = collectionUtils.sortList(list);
         assertEquals(Arrays.asList(1, 1, 2, 3, 4, 5, 6, 9), result);
@@ -36,7 +36,7 @@ public class CollectionUtilsTest {
      * 测试计算列表总和
      */
     @Test
-    public void testSumList() {
+    void testSumList() {
         assertEquals(0, collectionUtils.sumList(null));
         assertEquals(0, collectionUtils.sumList(Arrays.asList()));
         assertEquals(15, collectionUtils.sumList(Arrays.asList(1, 2, 3, 4, 5)));
@@ -47,7 +47,7 @@ public class CollectionUtilsTest {
      * 测试检查是否包含重复元素
      */
     @Test
-    public void testContainsDuplicate() {
+    void testContainsDuplicate() {
         assertEquals(false, collectionUtils.containsDuplicate(null));
         assertEquals(false, collectionUtils.containsDuplicate(Arrays.asList()));
         assertEquals(false, collectionUtils.containsDuplicate(Arrays.asList(1, 2, 3)));

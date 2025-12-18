@@ -1,12 +1,12 @@
 package org.example.moduleA;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Validator类的单元测试
  */
-public class ValidatorTest {
+class ValidatorTest {
 
     private Validator validator = new Validator();
 
@@ -14,7 +14,7 @@ public class ValidatorTest {
      * 测试邮箱验证
      */
     @Test
-    public void testIsValidEmail() {
+    void testIsValidEmail() {
         assertEquals(true, validator.isValidEmail("test@example.com"));
         assertEquals(true, validator.isValidEmail("user.name@domain.co.uk"));
         assertEquals(false, validator.isValidEmail("invalid"));
@@ -26,7 +26,7 @@ public class ValidatorTest {
      * 测试年龄验证
      */
     @Test
-    public void testIsValidAge() {
+    void testIsValidAge() {
         assertEquals(true, validator.isValidAge(25));
         assertEquals(true, validator.isValidAge(0));
         assertEquals(true, validator.isValidAge(100));
@@ -39,7 +39,7 @@ public class ValidatorTest {
      * 测试手机号验证
      */
     @Test
-    public void testIsValidPhoneNumber() {
+    void testIsValidPhoneNumber() {
         assertEquals(true, validator.isValidPhoneNumber("1234567890"));
         assertEquals(false, validator.isValidPhoneNumber("13800138000"));
         assertEquals(false, validator.isValidPhoneNumber("010-12345678"));
@@ -51,7 +51,7 @@ public class ValidatorTest {
      * 测试非空非空验证
      */
     @Test
-    public void testIsNotNullOrEmpty() {
+    void testIsNotNullOrEmpty() {
         assertEquals(false, validator.isNotNullOrEmpty(null));
         assertEquals(false, validator.isNotNullOrEmpty(""));
         assertEquals(true, validator.isNotNullOrEmpty("  "));
@@ -62,7 +62,7 @@ public class ValidatorTest {
      * 测试正数验证
      */
     @Test
-    public void testIsPositive() {
+    void testIsPositive() {
         assertEquals(true, validator.isPositive(1));
         assertEquals(true, validator.isPositive(100));
         assertEquals(false, validator.isPositive(0));
