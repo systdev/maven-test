@@ -1,0 +1,2 @@
+- 文件扫描：https://github.com/windirstat/windirstat
+- Vibe Coding: https://github.com/2025Emma/vibe-coding-cn
